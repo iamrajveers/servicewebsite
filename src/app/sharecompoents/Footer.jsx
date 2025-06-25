@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from "next/image";
 import logo from "../../../public/logo (2).png";
 
 const Footer = () => {
@@ -13,7 +13,6 @@ const Footer = () => {
         { name: 'LinkedIn', icon: 'linkedin', url: '#' },
         { name: 'Instagram', icon: 'instagram', url: '#' },
         { name: 'Dribbble', icon: 'dribbble', url: '#' },
-    
     ];
 
     const quickLinks = [
@@ -56,11 +55,11 @@ const Footer = () => {
     };
 
     return (
-        <footer className="relative bg-gradient-to-b from-[#F9FAFB] to-[#F3F4F6] border-t border-gray-200 overflow-hidden">
-            {/* Decorative elements with your gradient colors */}
+        <footer className="relative bg-gradient-to-b from-[#F9FAFB] to-[#F3F4F6] overflow-hidden">
+            {/* Enhanced decorative elements with gradient colors including orange */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#423F8D] rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-                <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#3A3780] rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
+                <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#FF6D00] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
                 <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-[#2A2765] rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
             </div>
 
@@ -75,13 +74,9 @@ const Footer = () => {
                 >
                     {/* Company Info */}
                     <motion.div variants={fadeInUp}>
-                        
-                        <Link href="/" className="flex items-center mb-6">
-                            <span className="text-3xl font-bold bg-gradient-to-r from-[#423F8D] to-[#2A2765] bg-clip-text text-transparent">
-                                Nexa<span className="font-light">Digital</span>
-                            </span>
+                        <Link href="/" className="flex items-center gap-2 mb-6">
+                            <Image src={logo} alt="Logo" width={140} height={80} />
                         </Link>
-
                         <p className="text-gray-600 mb-6 leading-relaxed">
                             We craft digital experiences that inspire, engage, and convert. Let's build something amazing together.
                         </p>
@@ -94,11 +89,11 @@ const Footer = () => {
                                     rel="noopener noreferrer"
                                     whileHover={{ y: -3, scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#423F8D] transition-all hover:shadow-md"
+                                    className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#423F8D] transition-all hover:shadow-md group"
                                     aria-label={social.name}
                                 >
                                     <svg
-                                        className="h-5 w-5"
+                                        className="h-5 w-5 group-hover:scale-110 transition-transform"
                                         fill="currentColor"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
@@ -127,7 +122,7 @@ const Footer = () => {
                                         href={link.href}
                                         className="text-gray-600 hover:text-[#423F8D] transition-colors flex items-center group"
                                     >
-                                        <span className="w-2 h-2 bg-gray-300 rounded-full mr-3 group-hover:bg-[#423F8D] transition-colors"></span>
+                                        <span className="w-2 h-2 bg-gray-300 rounded-full mr-3 group-hover:bg-[#FF6D00] transition-colors"></span>
                                         {link.name}
                                     </Link>
                                 </motion.li>
@@ -138,7 +133,7 @@ const Footer = () => {
                     {/* Services */}
                     <motion.div variants={fadeInUp}>
                         <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-                            <span className="w-3 h-3 bg-[#3A3780] rounded-full mr-2"></span>
+                            <span className="w-3 h-3 bg-[#FF6D00] rounded-full mr-2"></span>
                             Our Services
                         </h3>
                         <ul className="space-y-3">
@@ -150,9 +145,9 @@ const Footer = () => {
                                 >
                                     <Link
                                         href={`/services#${service.toLowerCase().replace(' ', '-')}`}
-                                        className="text-gray-600 hover:text-[#3A3780] transition-colors flex items-center group"
+                                        className="text-gray-600 hover:text-[#FF6D00] transition-colors flex items-center group"
                                     >
-                                        <span className="w-2 h-2 bg-gray-300 rounded-full mr-3 group-hover:bg-[#3A3780] transition-colors"></span>
+                                        <span className="w-2 h-2 bg-gray-300 rounded-full mr-3 group-hover:bg-[#FF6D00] transition-colors"></span>
                                         {service}
                                     </Link>
                                 </motion.li>
@@ -192,9 +187,9 @@ const Footer = () => {
                                 <p>123 Innovation Drive, San Francisco, CA 94107</p>
                             </div>
                             <div className="flex items-center">
-                                <div className="flex-shrink-0 w-8 h-8 bg-[#3A3780]/10 rounded-full flex items-center justify-center mr-3">
+                                <div className="flex-shrink-0 w-8 h-8 bg-[#FF6D00]/10 rounded-full flex items-center justify-center mr-3">
                                     <svg
-                                        className="h-4 w-4 text-[#3A3780]"
+                                        className="h-4 w-4 text-[#FF6D00]"
                                         fill="none"
                                         viewBox="0 0 24 24"
                                         stroke="currentColor"
@@ -207,7 +202,7 @@ const Footer = () => {
                                         />
                                     </svg>
                                 </div>
-                                <a href="tel:+14155550123" className="hover:text-[#3A3780] transition-colors">
+                                <a href="tel:+14155550123" className="hover:text-[#FF6D00] transition-colors">
                                     +1 (415) 555-0123
                                 </a>
                             </div>
@@ -240,10 +235,11 @@ const Footer = () => {
                                 <input
                                     type="email"
                                     placeholder="Your email"
-                                    className="px-4 py-2 w-full rounded-l-lg border border-r-0 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#423F8D] focus:border-transparent"
+                                    className="px-4 py-2 w-full rounded-l-lg border border-r-0 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#FF6D00] focus:border-transparent"
                                 />
-                                <button className="bg-gradient-to-r from-[#423F8D] to-[#2A2765] text-white px-4 py-2 rounded-r-lg hover:opacity-90 transition-opacity">
-                                    <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <button className="bg-gradient-to-r from-[#FF6D00] to-[#FF9E00] text-white px-4 py-2 rounded-r-lg hover:opacity-90 transition-opacity flex items-center">
+                                    <span className="mr-1">Join</span>
+                                    <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                                     </svg>
                                 </button>
@@ -252,14 +248,23 @@ const Footer = () => {
                     </motion.div>
                 </motion.div>
 
-                {/* Divider */}
+                {/* Enhanced Divider with gradient */}
                 <motion.div
-                    className="border-t border-gray-200 my-12"
+                    className="my-12 relative"
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                     viewport={{ once: true }}
-                ></motion.div>
+                >
+                    <div className="absolute inset-0 flex items-center">
+                        <div className="w-full border-t border-gray-200"></div>
+                    </div>
+                    <div className="relative flex justify-center">
+                        <span className="px-4 bg-gradient-to-r from-[#423F8D] via-[#FF6D00] to-[#2A2765] bg-clip-text text-transparent text-sm font-medium">
+                            ✦Your Company ✦
+                        </span>
+                    </div>
+                </motion.div>
 
                 {/* Bottom Footer */}
                 <motion.div
@@ -270,7 +275,8 @@ const Footer = () => {
                     viewport={{ once: true }}
                 >
                     <p className="text-gray-500 text-sm mb-4 md:mb-0">
-                        &copy; {currentYear} NexaDigital. All rights reserved.
+                        &copy; {currentYear}  • Your Company • All rights reserved.
+
                     </p>
 
                     <div className="flex flex-wrap justify-center gap-4 md:gap-6">
@@ -278,7 +284,7 @@ const Footer = () => {
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="text-gray-500 hover:text-[#423F8D] text-sm transition-colors"
+                                className="text-gray-500 hover:text-[#FF6D00] text-sm transition-colors hover:underline underline-offset-4"
                             >
                                 {link.name}
                             </Link>
