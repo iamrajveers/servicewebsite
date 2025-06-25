@@ -133,7 +133,7 @@ const Footer = () => {
                     {/* Services */}
                     <motion.div variants={fadeInUp}>
                         <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-                            <span className="w-3 h-3 bg-[#FF6D00] rounded-full mr-2"></span>
+                            <span className="w-3 h-3 bg-[#2A2765] rounded-full mr-2"></span>
                             Our Services
                         </h3>
                         <ul className="space-y-3">
