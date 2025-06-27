@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import {
   FiMenu,
@@ -48,13 +48,44 @@ const socialIcons = [
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [isDesktop, setIsDesktop] = useState(false);
   const pathname = usePathname();
   const phoneNumber = "+1 (234) 567-890";
   const email = "info@example.com";
+  const submenuRefs = useRef([]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const toggleSubmenu = (index) => {
-    setOpenSubmenu(openSubmenu === index ? null : index);
+    if (!isDesktop) {
+      setOpenSubmenu(openSubmenu === index ? null : index);
+    }
   };
+
+  const handleMouseEnter = (index) => {
+    if (isDesktop) {
+      setOpenSubmenu(index);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isDesktop) {
+      setOpenSubmenu(null);
+    }
+  };
+
+  // Close mobile menu when path changes
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <>
@@ -93,7 +124,13 @@ const Header = () => {
         <div className="hidden lg:flex items-center">
           <ul className="flex items-center space-x-1 text-base lg:text-[18px] font-bold text-[#423F8D]">
             {menus.map((menu, i) => (
-              <li key={i} className="relative group">
+              <li
+                key={i}
+                className="relative group"
+                onMouseEnter={() => handleMouseEnter(i)}
+                onMouseLeave={handleMouseLeave}
+                ref={el => submenuRefs.current[i] = el}
+              >
                 {menu.submenu ? (
                   <>
                     <div className="flex items-center px-3 lg:px-4 py-1 lg:py-2 rounded-[4px] transition-all duration-300 group">
@@ -106,23 +143,18 @@ const Header = () => {
                       >
                         {menu.label}
                       </Link>
-                      <button
-                        onClick={() => toggleSubmenu(i)}
-                        className="ml-1 text-[#FF6D00] hover:text-[#FF6D00] focus:outline-none"
-                        aria-label="Toggle Submenu"
-                      >
-                        {openSubmenu === i ? <FiChevronUp /> : <FiChevronDown />}
-                      </button>
+                      <span className="ml-1 text-[#FF6D00] group-hover:text-[#FF6D00]">
+                        <FiChevronDown className={`transition-transform ${openSubmenu === i ? 'rotate-180' : ''}`} />
+                      </span>
                     </div>
                     <div
-                      className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white shadow-lg rounded-md py-2 z-50 transition-all duration-300 ${openSubmenu === i ? "opacity-100 visible" : "opacity-0 invisible"
-                        }`}
+                      className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white shadow-xl rounded-lg py-2 z-50 transition-all duration-300 ${openSubmenu === i ? "opacity-100 visible scale-100" : "opacity-0 invisible scale-95"}`}
                     >
                       {menu.submenu.map((subitem, j) => (
                         <Link key={j} href={subitem.href}
-                          className={`block px-4 py-2 text-[#423F8D] hover:bg-[#FF6D00] hover:text-white ${pathname === subitem.href ? "bg-[#FF6D00] text-white" : ""
-                            }`}
+                          className={`block px-4 py-3 text-[#423F8D] hover:bg-[#FF6D00] hover:text-white transition-all duration-200 flex items-center ${pathname === subitem.href ? "bg-[#FF6D00] text-white" : ""}`}
                         >
+                          <span className="w-2 h-2 rounded-full bg-[#FF6D00] mr-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                           {subitem.label}
                         </Link>
                       ))}
@@ -137,6 +169,9 @@ const Header = () => {
                       }`}
                   >
                     {menu.label}
+                    {pathname === menu.href && (
+                      <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-[#FF6D00] rounded-full"></span>
+                    )}
                   </Link>
                 )}
               </li>
@@ -161,11 +196,13 @@ const Header = () => {
         </div>
       </nav>
 
+
+
       {/* Mobile Menu */}
+
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 z-40 pt-20 px-4 sm:px-6 flex flex-col overflow-y-auto"
-          style={{ background: "linear-gradient(to bottom, #FF6D00 0%, #423F8D 100%)" }}
+          className="lg:hidden fixed inset-0 z-40 pt-20 px-4 sm:px-6 flex flex-col overflow-y-auto bg-gradient-to-b from-[#FF6D00] to-[#423F8D]"
         >
           <div className="space-y-1 max-w-4xl mx-auto w-full">
             {menus.map((menu, i) => (
@@ -185,24 +222,25 @@ const Header = () => {
                       </Link>
                       <button
                         onClick={() => toggleSubmenu(i)}
-                        className="text-white hover:text-[#FF6D00]"
+                        className="text-white hover:text-[#FF6D00] p-2"
                         aria-label="Toggle Submenu"
                       >
                         {openSubmenu === i ? <FiChevronUp /> : <FiChevronDown />}
                       </button>
                     </div>
                     {openSubmenu === i && (
-                      <div className="pl-4">
+                      <div className="pl-6 bg-white bg-opacity-10 rounded-lg mx-2 my-1">
                         {menu.submenu.map((subitem, j) => (
                           <Link
                             key={j}
                             href={subitem.href}
                             className={`block py-2 px-4 rounded-md text-base sm:text-lg font-medium ${pathname === subitem.href
                               ? "bg-white text-[#FF6D00] font-semibold"
-                              : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
+                              : "text-[#423F8D] hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
                               }`}
                             onClick={() => setIsOpen(false)}
                           >
+                            <span className="inline-block w-2 h-2 rounded-full bg-[#FF6D00] mr-2"></span>
                             {subitem.label}
                           </Link>
                         ))}
@@ -251,6 +289,17 @@ const Header = () => {
           </div>
         </div>
       )}
+
+
+
+       
+          
+    
+
+
+
+
+
     </>
   );
 };
