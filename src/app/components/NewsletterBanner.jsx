@@ -1,6 +1,7 @@
+
+"use client"
 import React from 'react';
 import { motion } from 'framer-motion';
-
 const NewsletterBanner = () => {
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-[#423F8D] via-[#3A3780] to-[#2A2765] py-12 px-6  shadow-2xl">

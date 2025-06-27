@@ -15,11 +15,13 @@ const FAQSection = () => {
       answer: "Project timelines vary based on complexity. Simple websites take 2-4 weeks, while complex applications may require 3-6 months. We provide a detailed timeline after our initial consultation.",
       icon: "⏱️"
     },
+
     {
       question: "What's your pricing structure?",
       answer: "We offer flexible pricing models: fixed-price for well-defined projects, or time-and-materials for ongoing work. All projects include transparent pricing with no hidden costs.",
       icon: "💰"
     },
+    
     {
       question: "Do you provide ongoing support?",
       answer: "Yes! We offer various support packages including maintenance, updates, and 24/7 emergency support. Our team remains available even after project completion.",

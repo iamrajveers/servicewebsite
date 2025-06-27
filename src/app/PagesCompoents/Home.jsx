@@ -26,7 +26,7 @@ const Home = () => {
       <VisionSection />
       <ServicesSection />
       <HowWeWork />
-      <BlogSection />
+      <BlogSection isHomePage={true} />
       <NewsletterBanner />
       <TestimonialSection />
     </Loader>

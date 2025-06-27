@@ -1,10 +1,11 @@
+"use client"
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 const Banner = ({ title, subtitle, imageUrl }) => {
   return (
-    <section className="relative h-[50vh] min-h-[400px] w-full overflow-hidden bg-gradient-to-br from-[#423F8D] to-[#2A2765]">
+    <section className="relative h-[50vh] min-h-[350px] w-full overflow-hidden bg-gradient-to-br from-[#423F8D] to-[#2A2765]">
       {/* Optional decorative elements */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-20 left-10 w-40 h-40 bg-[#FF6D00] rounded-full filter blur-3xl"></div>
@@ -36,7 +37,7 @@ const Banner = ({ title, subtitle, imageUrl }) => {
             {title || 'Our Blog'}
           </h1>
           {subtitle && (
-            <p className="text-xl md:text-2xl text-gray-200 mt-4 max-w-2xl mx-auto">
+            <p className="text-xl md:text-xl text-gray-200 mt-4 max-w-2xl mx-auto">
               {subtitle}
             </p>
           )}
