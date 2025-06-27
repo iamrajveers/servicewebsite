@@ -1,20 +1,27 @@
-"use client"
-import React from 'react'
-import Header from '../sharecompoents/Header'
-import HomeHerosection from '../components/HomeHerosection'
-import VisionSection from '../components/VisionSection'
-import ServicesSection from '../components/ServiceSection'
-import HowWeWork from '../components/HowWeWork'
-import NewsletterBanner from '../components/NewsletterBanner'
-import BlogSection from '../components/BlogSection'
-import TestimonialSection from '../components/TestimonialSection'
-import Footer from '../sharecompoents/Footer'
+"use client";
+import React, { useState, useEffect } from "react";
+import HomeHerosection from "../components/HomeHerosection";
+import VisionSection from "../components/VisionSection";
+import ServicesSection from "../components/ServiceSection";
+import HowWeWork from "../components/HowWeWork";
+import NewsletterBanner from "../components/NewsletterBanner";
+import BlogSection from "../components/BlogSection";
+import TestimonialSection from "../components/TestimonialSection";
+import Loader from "../sharecompoents/Loader";
+
 const Home = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-
-    <>
-      <Header />
+    <Loader loading={isLoading}>
       <HomeHerosection />
       <VisionSection />
       <ServicesSection />
@@ -22,10 +29,8 @@ const Home = () => {
       <BlogSection />
       <NewsletterBanner />
       <TestimonialSection />
-      <Footer />
+    </Loader>
+  );
+};
 
-    </>
-  )
-}
-
-export default Home
+export default Home;

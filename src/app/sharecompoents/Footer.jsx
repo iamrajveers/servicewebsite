@@ -1,19 +1,29 @@
+"use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Link from 'next/link';111
 import Image from "next/image";
 import logo from "../../../public/logo (2).png";
+import { FaFacebookF, FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
+
+const socialLinks = [
+    { name: "Facebook", url: "https://facebook.com", icon: FaFacebookF },
+    { name: "LinkedIn", url: "https://linkedin.com", icon: FaLinkedinIn },
+    { name: "GitHub", url: "https://github.com", icon: FaGithub },
+    { name: "Twitter", url: "https://twitter.com", icon: FaTwitter },
+];
 
 const Footer = () => {
+
     const currentYear = new Date().getFullYear();
 
     const socialLinks = [
-        { name: 'Twitter', icon: 'twitter', url: '#' },
-        { name: 'Facebook', icon: 'facebook', url: '#' },
-        { name: 'LinkedIn', icon: 'linkedin', url: '#' },
-        { name: 'Instagram', icon: 'instagram', url: '#' },
-        { name: 'Dribbble', icon: 'dribbble', url: '#' },
+        { name: "Facebook", url: "https://facebook.com", icon: FaFacebookF },
+        { name: "LinkedIn", url: "https://linkedin.com", icon: FaLinkedinIn },
+        { name: "GitHub", url: "https://github.com", icon: FaGithub },
+        { name: "Twitter", url: "https://twitter.com", icon: FaTwitter },
     ];
+
 
     const quickLinks = [
         { name: 'Home', href: '/' },
@@ -80,6 +90,8 @@ const Footer = () => {
                         <p className="text-gray-600 mb-6 leading-relaxed">
                             We craft digital experiences that inspire, engage, and convert. Let's build something amazing together.
                         </p>
+
+
                         <div className="flex flex-wrap gap-3">
                             {socialLinks.map((social) => (
                                 <motion.a
@@ -89,21 +101,23 @@ const Footer = () => {
                                     rel="noopener noreferrer"
                                     whileHover={{ y: -3, scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
-                                    className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-gray-600 hover:text-[#423F8D] transition-all hover:shadow-md group"
+                                    className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-[#423F8D] hover:bg-[#E9E9FC] transition-all hover:shadow-md group"
                                     aria-label={social.name}
                                 >
-                                    <svg
-                                        className="h-5 w-5 group-hover:scale-110 transition-transform"
-                                        fill="currentColor"
-                                        viewBox="0 0 24 24"
-                                        aria-hidden="true"
-                                    >
-                                        <use xlinkHref={`/icons.svg#${social.icon}`} />
-                                    </svg>
+                                    <social.icon className="h-5 w-5 group-hover:scale-110 transition-transform" />
                                 </motion.a>
                             ))}
                         </div>
+
+
+
+
                     </motion.div>
+
+
+
+
+
 
                     {/* Quick Links */}
                     <motion.div variants={fadeInUp}>
