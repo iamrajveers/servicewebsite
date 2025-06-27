@@ -23,16 +23,16 @@ const menus = [
   { label: "Home", href: "/" },
   {
     label: "Our Service",
-    href: "/ourservices",
+    href: "/ourserivces",
     submenu: [
-      { label: "Web Development", href: "/ourservices/web-development" },
+      { label: "Web Development", href: "/ourserivces/web-development" },
       { label: "Mobile App Development", href: "/ourservices/mobile-app-development" },
       { label: "UI/UX Design", href: "/ourservices/ui-ux-design" },
       { label: "Digital Marketing", href: "/ourservices/digital-marketing" },
       { label: "SEO Services", href: "/ourservices/seo-services" },
     ],
   },
-  { label: "About", href: "/about-us" },
+  { label: "About", href: "/aboutus" },
   { label: "Area We Served", href: "/areaweserved" },
   { label: "Contact", href: "/contact" },
   { label: "Our Blogs", href: "/blog" },
@@ -99,11 +99,10 @@ const Header = () => {
                     <div className="flex items-center px-3 lg:px-4 py-1 lg:py-2 rounded-[4px] transition-all duration-300 group">
                       <Link
                         href={menu.href}
-                        className={`font-bold ${
-                          pathname === menu.href || menu.submenu.some(sub => pathname === sub.href)
-                            ? "text-[#FF6D00]"
-                            : "text-[#423F8D] group-hover:text-[#FF6D00]"
-                        }`}
+                        className={`font-bold ${pathname === menu.href || menu.submenu.some(sub => pathname === sub.href)
+                          ? "text-[#FF6D00]"
+                          : "text-[#423F8D] group-hover:text-[#FF6D00]"
+                          }`}
                       >
                         {menu.label}
                       </Link>
@@ -116,15 +115,13 @@ const Header = () => {
                       </button>
                     </div>
                     <div
-                      className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white shadow-lg rounded-md py-2 z-50 transition-all duration-300 ${
-                        openSubmenu === i ? "opacity-100 visible" : "opacity-0 invisible"
-                      }`}
+                      className={`absolute left-1/2 transform -translate-x-1/2 mt-2 w-56 bg-white shadow-lg rounded-md py-2 z-50 transition-all duration-300 ${openSubmenu === i ? "opacity-100 visible" : "opacity-0 invisible"
+                        }`}
                     >
                       {menu.submenu.map((subitem, j) => (
                         <Link key={j} href={subitem.href}
-                          className={`block px-4 py-2 text-[#423F8D] hover:bg-[#FF6D00] hover:text-white ${
-                            pathname === subitem.href ? "bg-[#FF6D00] text-white" : ""
-                          }`}
+                          className={`block px-4 py-2 text-[#423F8D] hover:bg-[#FF6D00] hover:text-white ${pathname === subitem.href ? "bg-[#FF6D00] text-white" : ""
+                            }`}
                         >
                           {subitem.label}
                         </Link>
@@ -134,11 +131,10 @@ const Header = () => {
                 ) : (
                   <Link
                     href={menu.href}
-                    className={`relative px-3 lg:px-4 py-1 lg:py-2 rounded-[4px] transition-all duration-300 ${
-                      pathname === menu.href
-                        ? "bg-white text-[#FF6D00] font-semibold"
-                        : "hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
-                    }`}
+                    className={`relative px-3 lg:px-4 py-1 lg:py-2 rounded-[4px] transition-all duration-300 ${pathname === menu.href
+                      ? "bg-white text-[#FF6D00] font-semibold"
+                      : "hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
+                      }`}
                   >
                     {menu.label}
                   </Link>
@@ -180,11 +176,10 @@ const Header = () => {
                       <Link
                         href={menu.href}
                         onClick={() => setIsOpen(false)}
-                        className={`py-3 px-4 text-base sm:text-lg font-medium rounded-md ${
-                          pathname === menu.href || menu.submenu.some(sub => pathname === sub.href)
-                            ? "bg-white text-[#FF6D00] font-semibold"
-                            : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
-                        }`}
+                        className={`py-3 px-4 text-base sm:text-lg font-medium rounded-md ${pathname === menu.href || menu.submenu.some(sub => pathname === sub.href)
+                          ? "bg-white text-[#FF6D00] font-semibold"
+                          : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
+                          }`}
                       >
                         {menu.label}
                       </Link>
@@ -202,11 +197,10 @@ const Header = () => {
                           <Link
                             key={j}
                             href={subitem.href}
-                            className={`block py-2 px-4 rounded-md text-base sm:text-lg font-medium ${
-                              pathname === subitem.href
-                                ? "bg-white text-[#FF6D00] font-semibold"
-                                : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
-                            }`}
+                            className={`block py-2 px-4 rounded-md text-base sm:text-lg font-medium ${pathname === subitem.href
+                              ? "bg-white text-[#FF6D00] font-semibold"
+                              : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
+                              }`}
                             onClick={() => setIsOpen(false)}
                           >
                             {subitem.label}
@@ -218,11 +212,10 @@ const Header = () => {
                 ) : (
                   <Link
                     href={menu.href}
-                    className={`block py-3 px-4 rounded-md text-base sm:text-lg font-medium transition-colors ${
-                      pathname === menu.href
-                        ? "bg-white text-[#FF6D00] font-semibold"
-                        : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
-                    }`}
+                    className={`block py-3 px-4 rounded-md text-base sm:text-lg font-medium transition-colors ${pathname === menu.href
+                      ? "bg-white text-[#FF6D00] font-semibold"
+                      : "text-white hover:bg-white hover:text-[#FF6D00] hover:bg-opacity-20"
+                      }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {menu.label}
