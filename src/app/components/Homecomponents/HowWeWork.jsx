@@ -99,7 +99,7 @@ const HowWeWork = () => {
                 >
                     <span className="text-[#FF6D00] font-semibold tracking-wider text-sm md:text-base">HOW WE WORK</span>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-2 md:mt-4 mb-4 md:mb-6 leading-tight">
-                        Our <span className="text-[#00C2FF]">Process</span>
+                        Our <span className="text-[#FF6D00]">Process</span>
                     </h2>
                     <p className="text-base md:text-xl text-gray-200 max-w-3xl mx-auto">
                         A streamlined approach ensuring quality at every stage.

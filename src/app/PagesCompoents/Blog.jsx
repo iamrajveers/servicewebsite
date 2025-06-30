@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from '../sharecompoents/Banner';
-import BlogSection from '../components/BlogSection';
-import NewsletterBanner from '../components/NewsletterBanner';
+import BlogSection from '../components/Homecomponents/BlogSection';
+import NewsletterBanner from '../sharecompoents/NewsletterBanner';
 
 const Blog = () => {
   return (

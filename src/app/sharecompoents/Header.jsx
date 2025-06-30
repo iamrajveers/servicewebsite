@@ -34,7 +34,7 @@ const menus = [
   },
   { label: "About", href: "/aboutus" },
   { label: "Area We Served", href: "/areaweserved" },
-  { label: "Contact", href: "/contact" },
+  { label: "Contact", href: "/contactus" },
   { label: "Our Blogs", href: "/blog" },
 ];
 
@@ -295,10 +295,6 @@ const Header = () => {
        
           
     
-
-
-
-
 
     </>
   );

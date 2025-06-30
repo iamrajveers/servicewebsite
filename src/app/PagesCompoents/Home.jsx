@@ -1,12 +1,12 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import HomeHerosection from "../components/HomeHerosection";
-import VisionSection from "../components/VisionSection";
-import ServicesSection from "../components/ServiceSection";
-import HowWeWork from "../components/HowWeWork";
-import NewsletterBanner from "../components/NewsletterBanner";
-import BlogSection from "../components/BlogSection";
-import TestimonialSection from "../components/TestimonialSection";
+import HomeHerosection from "../components/Homecomponents/HomeHerosection";
+import ServicesSection from "../components/Homecomponents/ServiceSection";
+import VisionSection from "../components/Homecomponents/VisionSection";
+import HowWeWork from "../components/Homecomponents/HowWeWork";
+import NewsletterBanner from "../sharecompoents/NewsletterBanner";
+import BlogSection from "../components/Homecomponents/BlogSection";
+import TestimonialSection from "../components/Homecomponents/TestimonialSection";
 import Loader from "../sharecompoents/Loader";
 
 const Home = () => {
@@ -21,6 +21,7 @@ const Home = () => {
   }, []);
 
   return (
+    
     <Loader loading={isLoading}>
       <HomeHerosection />
       <VisionSection />

@@ -1,12 +1,13 @@
+"use client"
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import Modal from './Model';
-import RequestForm from './RequestForm';
-import logo from "../../../public/logo (2).png";
+import Modal from '../Model';
+import RequestForm from '../RequestForm';
+import logo from "../../../../public/logo (2).png"
 
-const HomeHerosection = () => {
+const AreasWeServeHero = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -34,6 +35,10 @@ const HomeHerosection = () => {
       message: ''
     });
   };
+
+
+
+
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16">
@@ -65,29 +70,40 @@ const HomeHerosection = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold leading-tight mb-4 sm:mb-6 drop-shadow-lg">
-              Elevate Your Brand with Our Services
+              Serving Communities Across the Nation
             </h1>
 
             <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 max-w-lg mx-auto lg:mx-0 drop-shadow-md">
-              Experience unparalleled growth and engagement.
+              We proudly provide our services to major cities and regions nationwide.
               <span className="block mt-2 sm:mt-3">
-                Join us to create meaningful connections with your audience.
+                Expanding our reach to serve you better, wherever you are.
               </span>
             </p>
 
+            {/* Areas Served Grid */}
+            {/* <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6 sm:mb-8">
+              {areasServed.map((area, index) => (
+                <div key={index} className="bg-white/20 backdrop-blur-sm rounded-lg p-2 sm:p-3 text-center">
+                  <span className="text-white font-medium text-sm sm:text-base">{area}</span>
+                </div>
+              ))}
+            </div> */}
+
+
+
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Link
-                href="/get-started"
+                href="/coverage"
                 className="bg-[#FF6D00] hover:bg-white hover:text-[#FF6D00] text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition duration-300 text-center shadow-lg transform hover:scale-105 text-sm sm:text-base"
               >
-                Get Started
+                Full Coverage Map
               </Link>
 
               <Link
-                href="/learn-more"
+                href="/services"
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition duration-300 text-center shadow-lg transform hover:scale-105 text-sm sm:text-base"
               >
-                Learn More
+                Our Services
               </Link>
             </div>
           </motion.div>
@@ -113,67 +129,61 @@ const HomeHerosection = () => {
                   />
                 </div>
               </div>
-              
+
               {/* Text */}
               <div className="text-center text-white mb-6 sm:mb-8">
-                <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Ready to Get Started?</h3>
-                <p className="text-base sm:text-lg">Contact us today and let's build something amazing together.</p>
+                <h3 className="text-xl sm:text-2xl font-bold mb-2 sm:mb-3">Service In Your Area?</h3>
+                <p className="text-base sm:text-lg">Check if we're available in your location or request expansion to your city.</p>
               </div>
-              
+
               {/* CTA Buttons */}
               <div className="space-y-3 sm:space-y-4">
                 <Link
-                  href="tel:+1234567890"
+                  href="/coverage-check"
                   className="flex items-center justify-center bg-[#FF6D00] hover:bg-white hover:text-[#FF6D00] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition duration-300 shadow-lg transform hover:scale-[1.02] text-sm sm:text-base"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
                   </svg>
-                  Call Now
+                  Check Coverage
                 </Link>
-                
+
                 <Link
-                  href="/contact"
+                  href="/expansion-request"
                   className="flex items-center justify-center bg-white/10 hover:bg-white hover:text-[#423F8D] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition duration-300 border border-white/30 shadow-lg transform hover:scale-[1.02] text-sm sm:text-base"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
                   </svg>
-                  Message Us
+                  Request Expansion
                 </Link>
-                
+
                 <button
                   onClick={() => setIsModalOpen(true)}
                   className="w-full flex items-center justify-center bg-[#423F8D] hover:bg-white hover:text-[#423F8D] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition duration-300 shadow-lg transform hover:scale-[1.02] text-sm sm:text-base"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  Request Now
+                  Local Service Inquiry
                 </button>
               </div>
-
-
-              
             </div>
           </motion.div>
         </div>
       </div>
 
-
       {/* Modal */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        <RequestForm 
-          formData={formData} 
-          handleInputChange={handleInputChange} 
-          handleSubmit={handleSubmit} 
+        <RequestForm
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
         />
       </Modal>
-
-
-
     </section>
   );
 };
 
-export default HomeHerosection;
+export default AreasWeServeHero;

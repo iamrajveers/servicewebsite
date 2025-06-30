@@ -3,7 +3,7 @@ import Banner from '../sharecompoents/Banner'
 import ContactSection from '../components/ContactSection'
 import Faqsectioncontactus from '../components/Faqsectioncontactus'
 import MapSection from '../components/MapSection'
-import NewsletterBanner from '../components/NewsletterBanner'
+import NewsletterBanner from '../sharecompoents/NewsletterBanner'
 const Contact = () => {
 
   return (

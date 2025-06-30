@@ -8,6 +8,7 @@ const Areasection = () => {
     const [activeCity, setActiveCity] = useState(null);
 
     // Enhanced region data with additional details
+    
     const regions = [
         {
             name: "Northeast",
@@ -48,6 +49,7 @@ const Areasection = () => {
             highlight: true
         }
     ];
+
 
     // Animation variants
     const container = {

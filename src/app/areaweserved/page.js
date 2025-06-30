@@ -7,7 +7,6 @@ export const metadata = {
 };
 
 
-
 const areaweservedpage = () => {
     return (
 

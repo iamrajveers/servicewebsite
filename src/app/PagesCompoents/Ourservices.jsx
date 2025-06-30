@@ -1,10 +1,10 @@
 "use client";
 import React from 'react'
 import ServicesHero from '../components/ServicesHero';
-import ServicesSection from '../components/ServiceSection';
+import ServicesSection from '../components/Homecomponents/ServiceSection';
 import FAQSection from '../components/FAQSection';
 import ContactSection from '../components/ContactSection';
-import TestimonialSection from '../components/TestimonialSection';
+import TestimonialSection from '../components/Homecomponents/TestimonialSection';
 
 const Ourservices = () => {
 

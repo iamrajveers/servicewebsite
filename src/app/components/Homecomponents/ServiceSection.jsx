@@ -85,7 +85,7 @@ const ServicesSection = () => {
         >
           <span className="text-[#FF6D00] font-semibold tracking-wider">WHAT WE DO</span>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mt-4 mb-6 leading-tight">
-            Our <span className="text-[#00C2FF]">Specialized</span> Services
+            Our <span className="text-[#322F72]">Specialized</span> Services
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Delivering exceptional results through our comprehensive suite of digital solutions tailored to your unique needs.
