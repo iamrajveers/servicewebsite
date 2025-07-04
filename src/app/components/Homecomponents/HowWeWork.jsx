@@ -1,7 +1,41 @@
+"use client";
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import Link from "next/link";
+import Modal from '../Model';
+import RequestForm from '../RequestForm';
 
 const HowWeWork = () => {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
+
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Form submitted:', formData);
+        setIsModalOpen(false);
+        setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            message: ''
+        });
+    };
+
     const [activeStep, setActiveStep] = useState(0);
     const processSteps = [
         {
@@ -123,10 +157,10 @@ const HowWeWork = () => {
                         ))}
                     </div>
                     <div className="absolute top-3 md:top-4 left-0 right-0 h-1 bg-gray-600/50 rounded-full z-0"></div>
-                    <motion.div 
+                    <motion.div
                         className="absolute top-3 md:top-4 left-0 h-1 bg-gradient-to-r from-[#FF6D00] to-[#10B981] rounded-full z-0"
                         initial={{ width: '0%' }}
-                        animate={{ 
+                        animate={{
                             width: `${(activeStep / (processSteps.length - 1)) * 100}%`,
                             transition: { duration: 0.5 }
                         }}
@@ -141,7 +175,7 @@ const HowWeWork = () => {
                                 key={index}
                                 className={`absolute inset-0 w-full h-full p-2 sm:p-4 md:p-6 ${activeStep === index ? 'z-10' : 'z-0'}`}
                                 initial={{ opacity: 0, x: index > activeStep ? 100 : -100 }}
-                                animate={{ 
+                                animate={{
                                     opacity: activeStep === index ? 1 : 0,
                                     x: activeStep === index ? 0 : (index > activeStep ? 100 : -100),
                                 }}
@@ -176,7 +210,7 @@ const HowWeWork = () => {
                     </div>
 
                     {/* Navigation Arrows */}
-                    <button 
+                    <button
                         onClick={() => setActiveStep(prev => (prev - 1 + processSteps.length) % processSteps.length)}
                         className="absolute left-2 sm:left-4 md:left-10 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-lg z-20 transition-all duration-300"
                     >
@@ -184,7 +218,7 @@ const HowWeWork = () => {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
-                    <button 
+                    <button
                         onClick={() => setActiveStep(prev => (prev + 1) % processSteps.length)}
                         className="absolute right-2 sm:right-4 md:right-10 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/30 backdrop-blur-sm p-2 md:p-3 rounded-full shadow-lg z-20 transition-all duration-300"
                     >
@@ -216,16 +250,43 @@ const HowWeWork = () => {
                     <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4 md:mb-6">
                         Ready to begin your project?
                     </h3>
-                    <div className="flex flex-col sm:flex-row justify-center gap-3 md:gap-4">
-                        <button className="bg-[#FF6D00] hover:bg-white hover:text-[#FF6D00] text-white font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base">
+
+
+
+
+                    <div className="flex justify-center items-center gap-4 mb-4">
+                        {/* Get Started Button - Opens Modal */}
+                        <button
+                            onClick={() => setIsModalOpen(true)}
+                            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base hover:cursor-pointer"
+                        >
                             Get Started
                         </button>
-                        <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base">
-                            Contact Us
-                        </button>
+
+                        {/* Contact Us Button - Styled Same as Above */}
+                        <Link href="/contactus" passHref>
+                            <button
+                                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base hover:cursor-pointer"
+                            >
+                                Contact Us
+                            </button>
+                        </Link>
                     </div>
+
+                    
+
                 </motion.div>
             </div>
+
+            {/* Modal */}
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <RequestForm
+                    formData={formData}
+                    handleInputChange={handleInputChange}
+                    handleSubmit={handleSubmit}
+                />
+            </Modal>
+
         </section>
     );
 };

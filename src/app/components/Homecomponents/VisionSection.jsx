@@ -2,6 +2,223 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
+import { jsPDF } from "jspdf";
+import autoTable from "jspdf-autotable";
+
+const generateAirDuctCleaningPDF = () => {
+    // Create new PDF document
+    const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4"
+    });
+
+    // Set colors
+    const blue = [0, 104, 179];
+    const orange = [255, 102, 0];
+    const darkGray = [51, 51, 51];
+    const lightGray = [240, 240, 240];
+
+    // Add light gray background to all pages
+    doc.setFillColor(...lightGray);
+    doc.rect(0, 0, 210, 297, 'F');
+
+    // ====== COVER PAGE ======
+    // Blue header
+    doc.setFillColor(...blue);
+    doc.rect(0, 0, 210, 40, 'F');
+
+    // Company name (white text)
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(24);
+    doc.setFont("helvetica", "bold");
+    doc.text("FreshAir Duct Cleaners", 105, 25, { align: "center" });
+
+    // Main title
+    doc.setTextColor(...blue);
+    doc.setFontSize(28);
+    doc.text("Professional", 105, 70, { align: "center" });
+    doc.text("Air Duct Cleaning", 105, 80, { align: "center" });
+    doc.text("Services", 105, 90, { align: "center" });
+
+    // Image placeholder (in real use, you'd add an actual image)
+    doc.setDrawColor(200, 200, 200);
+    doc.setFillColor(220, 220, 220);
+    doc.roundedRect(50, 100, 110, 80, 3, 3, 'FD');
+    doc.setTextColor(150, 150, 150);
+    doc.setFontSize(12);
+    doc.text("[Photo of clean ducts or happy technicians]", 105, 140, { align: "center" });
+
+    // Contact info box
+    doc.setFillColor(...orange);
+    doc.roundedRect(50, 190, 110, 30, 3, 3, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(14);
+    doc.text("Call Today: (555) 123-4567", 105, 200, { align: "center" });
+    doc.text("www.freshairducts.com", 105, 210, { align: "center" });
+
+    // ====== PAGE 2 - BENEFITS ======
+    doc.addPage();
+    doc.setFillColor(...lightGray);
+    doc.rect(0, 0, 210, 297, 'F');
+
+    // Page title
+    doc.setTextColor(...blue);
+    doc.setFontSize(20);
+    doc.text("Benefits of Professional", 20, 20);
+    doc.text("Air Duct Cleaning", 20, 28);
+
+    // Benefits list
+    const benefits = [
+        "✔ Improves indoor air quality",
+        "✔ Reduces dust in your home",
+        "✔ Helps allergy and asthma sufferers",
+        "✔ Removes unpleasant odors",
+        "✔ Increases HVAC system efficiency",
+        "✔ Can lower energy bills",
+        "✔ Extends equipment lifespan",
+        "✔ Removes mold and bacteria"
+    ];
+
+    doc.setTextColor(...darkGray);
+    doc.setFontSize(14);
+    let yPos = 50;
+    benefits.forEach(benefit => {
+        doc.text(benefit, 30, yPos);
+        yPos += 10;
+    });
+
+    // Testimonial box
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(20, 150, 170, 50, 3, 3, 'F');
+    doc.setDrawColor(200, 200, 200);
+    doc.roundedRect(20, 150, 170, 50, 3, 3, 'D');
+
+    doc.setTextColor(...blue);
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "italic");
+    doc.text('"After FreshAir cleaned our ducts,', 30, 165);
+    doc.text('we noticed less dust and my son\'s', 30, 173);
+    doc.text('allergies improved significantly!"', 30, 181);
+
+    doc.setFont("helvetica", "bold");
+    doc.text("- Sarah J., Homeowner", 30, 190);
+
+    // ====== PAGE 3 - OUR PROCESS ======
+    doc.addPage();
+    doc.setFillColor(...lightGray);
+    doc.rect(0, 0, 210, 297, 'F');
+
+    // Page title
+    doc.setTextColor(...blue);
+    doc.setFontSize(20);
+    doc.text("Our 6-Step Cleaning Process", 20, 20);
+
+    // Process steps
+    const steps = [
+        { num: "1", title: "Inspection", desc: "We examine your duct system for dirt and damage" },
+        { num: "2", title: "Preparation", desc: "Protect your floors and furniture with covers" },
+        { num: "3", title: "Vacuuming", desc: "Powerful truck-mounted vacuum removes debris" },
+        { num: "4", title: "Brushing", desc: "Special tools scrub ducts clean" },
+        { num: "5", title: "Sanitizing", desc: "Safe treatment kills mold and bacteria" },
+        { num: "6", title: "Final Check", desc: "We ensure everything is clean and working" }
+    ];
+
+    doc.setTextColor(...darkGray);
+    doc.setFontSize(12);
+    yPos = 40;
+    steps.forEach(step => {
+        // Step number (orange circle)
+        doc.setFillColor(...orange);
+        doc.circle(25, yPos - 3, 5, 'F');
+        doc.setTextColor(255, 255, 255);
+        doc.text(step.num, 25, yPos);
+
+        // Step title and description
+        doc.setTextColor(...blue);
+        doc.setFont("helvetica", "bold");
+        doc.text(step.title, 40, yPos);
+
+        doc.setTextColor(...darkGray);
+        doc.setFont("helvetica", "normal");
+        doc.text(step.desc, 40, yPos + 6);
+
+        yPos += 20;
+    });
+
+    // ====== PAGE 4 - PRICING & CONTACT ======
+    doc.addPage();
+    doc.setFillColor(...lightGray);
+    doc.rect(0, 0, 210, 297, 'F');
+
+    // Pricing section
+    doc.setTextColor(...blue);
+    doc.setFontSize(20);
+    doc.text("Service Packages", 20, 20);
+
+    // Pricing table
+    doc.setFillColor(255, 255, 255);
+    doc.roundedRect(20, 30, 170, 100, 3, 3, 'F');
+    doc.setDrawColor(200, 200, 200);
+    doc.roundedRect(20, 30, 170, 100, 3, 3, 'D');
+
+    // Table headers
+    doc.setTextColor(255, 255, 255);
+    doc.setFillColor(...blue);
+    doc.rect(20, 30, 170, 10, 'F');
+    doc.text("Package", 30, 37);
+    doc.text("Price", 150, 37, { align: "right" });
+
+    // Package rows
+    doc.setTextColor(...darkGray);
+    doc.setFontSize(12);
+    const packages = [
+        { name: "Basic Cleaning", price: "$299" },
+        { name: "Standard Cleaning", price: "$399" },
+        { name: "Premium Cleaning", price: "$499" },
+        { name: "Whole House Special", price: "$699" }
+    ];
+
+    yPos = 45;
+    packages.forEach(pkg => {
+        doc.text(pkg.name, 30, yPos);
+        doc.text(pkg.price, 150, yPos, { align: "right" });
+        doc.line(20, yPos + 3, 190, yPos + 3);
+        yPos += 10;
+    });
+
+    // Contact section
+    doc.setTextColor(...blue);
+    doc.setFontSize(20);
+    doc.text("Contact Us Today", 20, 150);
+
+    doc.setFillColor(...orange);
+    doc.roundedRect(20, 160, 170, 80, 3, 3, 'F');
+    doc.setTextColor(255, 255, 255);
+    doc.setFontSize(14);
+    doc.text("Call: (555) 123-4567", 30, 175);
+    doc.text("Email: info@freshairducts.com", 30, 185);
+    doc.text("Website: www.freshairducts.com", 30, 195);
+    doc.text("Hours: Mon-Sat 8am-6pm", 30, 205);
+
+    // Guarantee
+    doc.setTextColor(...blue);
+    doc.setFontSize(16);
+    doc.text("100% Satisfaction Guarantee", 20, 250);
+    doc.setFontSize(12);
+    doc.setTextColor(...darkGray);
+    doc.text("We stand behind our work with a full warranty on all services.", 20, 258);
+
+    // Save the PDF
+    doc.save("FreshAir_Duct_Cleaning_Services.pdf");
+};
+
+
+
+
+
+
 
 const VisionSection = () => {
     return (
@@ -72,15 +289,33 @@ const VisionSection = () => {
                                 </div>
                             </div>
 
+
+                            {/* ff */}
+
                             <div className="mt-8 md:mt-10 flex flex-col sm:flex-row gap-3 md:gap-4">
-                                <button className="bg-[#FF6D00] hover:bg-white hover:text-[#FF6D00] text-white font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base">
-                                    Explore Possibilities
-                                </button>
-                                <button className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base">
+
+                                <Link href="/aboutus">
+                                    <span className="bg-[#FF6D00] hover:bg-white hover:text-[#FF6D00] text-white font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base block text-center">
+                                        Explore Possibilities
+                                    </span>
+                                </Link>
+
+
+
+                                <button
+                                    onClick={generateAirDuctCleaningPDF}
+                                    className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 md:py-3 px-6 md:px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 text-sm md:text-base hover:cursor-pointer"
+                                >
                                     View Case Studies
                                 </button>
+
+
                             </div>
+
+
                         </div>
+
+
                     </motion.div>
 
                     {/* Right Column - Stylish Image */}

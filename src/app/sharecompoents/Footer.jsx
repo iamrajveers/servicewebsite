@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';111
+import Link from 'next/link'; 111
 import Image from "next/image";
 import logo from "../../../public/logo (2).png";
 import { FaFacebookF, FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
@@ -67,11 +67,12 @@ const Footer = () => {
     return (
         <footer className="relative bg-gradient-to-b from-[#F9FAFB] to-[#F3F4F6] overflow-hidden">
             {/* Enhanced decorative elements with gradient colors including orange */}
-            <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+            {/* <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute -top-20 -left-20 w-64 h-64 bg-[#423F8D] rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
                 <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#FF6D00] rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
                 <div className="absolute bottom-0 left-1/2 w-80 h-80 bg-[#2A2765] rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-            </div>
+            </div> */}
+
 
             <div className="container mx-auto px-6 py-16 relative z-10">
                 {/* Main Footer Content */}
@@ -109,14 +110,7 @@ const Footer = () => {
                             ))}
                         </div>
 
-
-
-
                     </motion.div>
-
-
-
-
 
 
                     {/* Quick Links */}

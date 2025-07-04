@@ -7,6 +7,7 @@ import RequestForm from '../RequestForm';
 import logo from "../../../../public/logo (2).png";
 
 const HomeHerosection = () => {
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -14,6 +15,7 @@ const HomeHerosection = () => {
     phone: '',
     message: ''
   });
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -36,6 +38,7 @@ const HomeHerosection = () => {
   };
 
   return (
+
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-16">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
@@ -77,14 +80,14 @@ const HomeHerosection = () => {
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
               <Link
-                href="/get-started"
+                href="/contactus"
                 className="bg-[#FF6D00] hover:bg-white hover:text-[#FF6D00] text-white font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition duration-300 text-center shadow-lg transform hover:scale-105 text-sm sm:text-base"
               >
                 Get Started
               </Link>
 
               <Link
-                href="/learn-more"
+                href="/aboutus"
                 className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-[#423F8D] font-semibold py-2 sm:py-3 px-6 sm:px-8 rounded-lg transition duration-300 text-center shadow-lg transform hover:scale-105 text-sm sm:text-base"
               >
                 Learn More
@@ -133,7 +136,7 @@ const HomeHerosection = () => {
                 </Link>
 
                 <Link
-                  href="/contact"
+                  href="/contactus"
                   className="flex items-center justify-center bg-white/10 hover:bg-white hover:text-[#423F8D] text-white font-semibold py-2 sm:py-3 px-4 sm:px-6 rounded-lg transition duration-300 border border-white/30 shadow-lg transform hover:scale-[1.02] text-sm sm:text-base"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -141,6 +144,7 @@ const HomeHerosection = () => {
                   </svg>
                   Message Us
                 </Link>
+
 
                 <button
                   onClick={() => setIsModalOpen(true)}
@@ -151,8 +155,11 @@ const HomeHerosection = () => {
                   </svg>
                   Request Now
                 </button>
-              </div>
 
+
+
+
+              </div>
 
 
             </div>
@@ -173,6 +180,8 @@ const HomeHerosection = () => {
 
 
     </section>
+
+
   );
 };
 

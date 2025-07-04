@@ -21,7 +21,7 @@ const FAQSection = () => {
       answer: "We offer flexible pricing models: fixed-price for well-defined projects, or time-and-materials for ongoing work. All projects include transparent pricing with no hidden costs.",
       icon: "💰"
     },
-    
+
     {
       question: "Do you provide ongoing support?",
       answer: "Yes! We offer various support packages including maintenance, updates, and 24/7 emergency support. Our team remains available even after project completion.",
@@ -102,7 +102,7 @@ const FAQSection = () => {
 
                 <motion.div
                   initial={{ height: 0, opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     height: activeIndex === index ? 'auto' : 0,
                     opacity: activeIndex === index ? 1 : 0
                   }}
@@ -119,7 +119,8 @@ const FAQSection = () => {
         </div>
 
         {/* CTA Section */}
-        <motion.div
+
+        {/* <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -137,7 +138,9 @@ const FAQSection = () => {
               Schedule a Call
             </button>
           </div>
-        </motion.div>
+        </motion.div> */}
+
+
       </div>
     </section>
   );

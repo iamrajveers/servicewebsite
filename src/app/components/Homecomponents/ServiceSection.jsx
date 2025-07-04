@@ -1,8 +1,45 @@
+"use client"
+import { useState } from 'react';
 import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from "next/link";
+import Modal from '../Model';
+import RequestForm from '../RequestForm';
 
 const ServicesSection = () => {
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+    const [formData, setFormData] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      message: ''
+    });
+  
+  
+    const handleInputChange = (e) => {
+      const { name, value } = e.target;
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    };
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log('Form submitted:', formData);
+      setIsModalOpen(false);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        message: ''
+      });
+    };
+
+
+
   const services = [
     {
       title: "Digital Strategy",
@@ -73,10 +110,10 @@ const ServicesSection = () => {
         <div className="absolute top-20 left-10 w-40 h-40 bg-[#FF6D00] rounded-full filter blur-3xl opacity-20"></div>
         <div className="absolute bottom-10 right-20 w-60 h-60 bg-[#00C2FF] rounded-full filter blur-3xl opacity-20"></div>
       </div>
-      
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -121,7 +158,7 @@ const ServicesSection = () => {
         </div>
 
         {/* CTA Section */}
-        <motion.div 
+        <motion.div
           className="mt-20 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -132,15 +169,46 @@ const ServicesSection = () => {
             Ready to transform your digital presence?
           </h3>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <button className="bg-[#FF6D00] hover:bg-[#E66500] text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105">
-              Get Started Today
-            </button>
-            <button className="bg-transparent border-2 border-[#423F8D] text-[#423F8D] hover:bg-[#423F8D] hover:text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105">
+
+
+            <Link href="/contactus" passHref>
+              <button className="bg-[#FF6D00] hover:bg-[#E66500] text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 hover:cursor-pointer">
+                Get Started Today
+              </button>
+            </Link>
+
+
+
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="bg-transparent border-2 border-[#423F8D] text-[#423F8D] hover:bg-[#423F8D] hover:text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 hover:cursor-pointer"
+            >
+
               Schedule Consultation
             </button>
+
+
+
+
+
+
+
+
+
           </div>
         </motion.div>
       </div>
+
+
+      {/* Modal */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <RequestForm
+          formData={formData}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmit}
+        />
+      </Modal>
+
     </section>
   );
 };

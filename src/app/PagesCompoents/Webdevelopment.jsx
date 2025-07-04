@@ -1,18 +1,21 @@
 "use client"
 import React from 'react'
-import Banner from '../sharecompoents/Banner'
+import HeroSection from '../components/webdevelopment/HeroSection'
+import FeaturesSection from '../components/webdevelopment/FeatureSection'
+import HowItWorks from '../components/webdevelopment/HowItWorks'
+import TestimonialSection from '../components/Homecomponents/TestimonialSection'
+import NewsletterBanner from '../sharecompoents/NewsletterBanner'
+
 const Webdevelopment = () => {
   return (
 
     <>
-
-      <Banner
-        title="Web Dev"
-        subtitle="We’d love to hear from you! Whether it's a new idea or an upgrade..."
-        imageUrl="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"
-      />
-
-
+      <HeroSection />
+      <FeaturesSection />
+      <HowItWorks />
+      <TestimonialSection />
+      <NewsletterBanner />
+      
     </>
 
   )

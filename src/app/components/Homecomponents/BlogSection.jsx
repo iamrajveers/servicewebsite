@@ -6,7 +6,6 @@ import Link from 'next/link';
 
 const BlogSection = ({ isHomePage = false }) => {
   const blogPosts = [
-
     {
       id: 1,
       title: "The Future of Web Development in 2024",
@@ -40,7 +39,7 @@ const BlogSection = ({ isHomePage = false }) => {
     {
       id: 4,
       title: "AI-Powered Design Tools Revolutionizing Creativity in 2024",
-      excerpt: "How artificial intelligence is transforming the design workflow and enabling new creative possibilities.",
+      excerpt: "How artificial intelligence is transforming the design workflow ossibilities.",
       category: "Design",
       date: "June 2, 2024",
       readTime: "6 min read",
@@ -96,49 +95,53 @@ const BlogSection = ({ isHomePage = false }) => {
         </motion.div>
 
         {/* Blog cards */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <motion.article
-              key={post.id}
-              className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <div className="relative h-60">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute bottom-4 left-4 bg-[#FF6D00] text-white text-sm font-medium px-3 py-1 rounded-full">
-                  {post.category}
+            <Link key={post.id} href={`/blog/${post.id}`} passHref>
+              <motion.article
+                className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <div className="relative h-60">
+                  <Image
+                    src={post.image}
+                    alt={post.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute bottom-4 left-4 bg-[#FF6D00] text-white text-sm font-medium px-3 py-1 rounded-full">
+                    {post.category}
+                  </div>
                 </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-center text-sm text-gray-500 mb-3">
-                  <span>{post.date}</span>
-                  <span className="mx-2">•</span>
-                  <span>{post.readTime}</span>
+                <div className="p-6">
+                  <div className="flex items-center text-sm text-gray-500 mb-3">
+                    <span>{post.date}</span>
+                    <span className="mx-2">•</span>
+                    <span>{post.readTime}</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-[#423F8D] transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {post.excerpt}
+                  </p>
+                  <span className="flex items-center text-[#423F8D] font-semibold group">
+                    Read More
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3 hover:text-[#423F8D] transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  {post.excerpt}
-                </p>
-                <button className="flex items-center text-[#423F8D] font-semibold group">
-                  Read More
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-              </div>
-            </motion.article>
+              </motion.article>
+            </Link>
           ))}
         </div>
+
+
 
         {/* "View All Articles" button (only on homepage) */}
         {isHomePage && (
@@ -150,7 +153,7 @@ const BlogSection = ({ isHomePage = false }) => {
             viewport={{ once: true }}
           >
             <Link href="/blog">
-              <button className="bg-[#423F8D] hover:bg-[#2A2765] text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 inline-flex items-center">
+              <button className="bg-[#423F8D] hover:bg-[#2A2765] text-white font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg transform hover:scale-105 inline-flex items-center hover:cursor-pointer">
                 View All Articles
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />

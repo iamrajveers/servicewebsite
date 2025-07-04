@@ -13,7 +13,7 @@ const Blog = () => {
 
       <BlogSection />
 
-     <NewsletterBanner />
+      <NewsletterBanner />
 
 
 

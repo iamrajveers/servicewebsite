@@ -2,9 +2,13 @@
 
 const nextConfig = {
   images: {
-    domains: ['images.unsplash.com'],
+    
+     domains: ["randomuser.me", "images.unsplash.com"],
   },
 }
+
+
+
 
 
 export default nextConfig;
